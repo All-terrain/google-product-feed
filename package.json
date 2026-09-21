@@ -1,0 +1,15 @@
+{
+  "name": "google-product-feed",
+  "version": "1.0.0",
+  "description": "オールテレーン Shopify店の単品（タイヤ・ホイール）を Google Merchant Center 用フィードにする",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build-feed.mjs",
+    "test": "node --test"
+  },
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,47 @@
+# Google Merchant Center 用フィードを毎日生成して main に commit する
+name: build-feed
+
+on:
+  schedule:
+    - cron: '30 19 * * *' # UTC 19:30 = JST 04:30
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# 二重起動防止（前回が走っていたら待つ・キャンセルはしない）
+concurrency:
+  group: build-feed
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 単体テスト
+        run: node --test
+
+      - name: フィード生成
+        run: node scripts/build-feed.mjs --out feed.xml --summary feed-summary.json
+
+      # 生成に失敗した場合はここまで来ないので何も commit されない
+      - name: 差分があれば commit & push
+        run: |
+          git add feed.xml feed-summary.json
+          if git diff --cached --quiet; then
+            echo "変更なし。commit しません"
+            exit 0
+          fi
+          git config user.name "All-terrain"
+          git config user.email "renhidaka@allterrain.jp"
+          git commit -m "feed: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git push

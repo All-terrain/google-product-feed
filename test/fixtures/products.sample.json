@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": 1001,
+      "title": "  195/45R16 サマータイヤ 16インチ   ファルケン ZE310R エコラン 1本のみ 正規品 ",
+      "handle": "falken-ze310r-195-45r16",
+      "body_html": "<p>※※※ ホイールは付属しておりません ※※※<br><br>▼ 納期について ▼<br>※取り寄せ商品もあるため、詳細な納期はご注文受付後にお送りするメールでご確認ください</p><p>ブラック&amp;レッド &lt;限定&gt; &quot;特価&quot; &#39;新品&#39;&nbsp;です</p>",
+      "vendor": "ファルケン",
+      "product_type": "タイヤ",
+      "tags": ["16インチ", "サマータイヤ", "タイヤ", "ファルケン"],
+      "variants": [
+        { "id": 2001, "sku": "4982266011951x1pc", "price": "9790", "available": true, "compare_at_price": null }
+      ],
+      "images": [{ "src": "https://cdn.shopify.com/s/files/1/tire-1001.jpg" }]
+    },
+    {
+      "id": 1002,
+      "title": "MID シュナイダー スタッグ 16インチ 6.5J +38 5穴114.3 メタリックグレー 4本セット",
+      "handle": "mid-stag-16-4pc",
+      "body_html": "<h2>MID シュナイダー スタッグ</h2><p>新品ホイール4本セットです。</p>",
+      "vendor": "MID",
+      "product_type": "ホイール",
+      "tags": ["4本", "17インチ", "5穴", "MID"],
+      "variants": [
+        { "id": 2002, "sku": "4560234928359x4pc", "price": "38500.00", "available": false, "compare_at_price": "40000.00" }
+      ],
+      "images": [
+        { "src": "https://cdn.shopify.com/s/files/1/wheel-1002-a.jpg" },
+        { "src": "https://cdn.shopify.com/s/files/1/wheel-1002-b.jpg" },
+        { "src": "https://cdn.shopify.com/s/files/1/wheel-1002-c.jpg" }
+      ]
+    },
+    {
+      "id": 1003,
+      "title": "ホットスタッフ Gスピード P-06 12インチ 3.50B +42 4穴100 ブラック&レッドクリア ホイール4本セット",
+      "handle": "hotstuff-p06-12",
+      "body_html": "<h2>ホットスタッフ Gスピード P-06 ブラック&amp;レッドクリア</h2><script>alert(1)</script><p>新品ホイール4本セットです。数量1でホイール4本をお届けします。タイヤは付属しません</p>",
+      "vendor": "ホットスタッフ",
+      "product_type": "ホイール",
+      "tags": ["4本", "Gスピード P-06"],
+      "variants": [
+        { "id": 2003, "sku": "p06-sale--4pc", "price": "25300", "available": true, "compare_at_price": null },
+        { "id": 2004, "sku": "p06--4pc", "price": "26300", "available": true, "compare_at_price": null }
+      ],
+      "images": [{ "src": "https://cdn.shopify.com/s/files/1/wheel-1003.jpg" }]
+    },
+    {
+      "id": 1004,
+      "title": "画像なし商品 タイヤ 1本",
+      "handle": "no-image-tire",
+      "body_html": "<p>画像がありません</p>",
+      "vendor": "テスト",
+      "product_type": "タイヤ",
+      "tags": ["15インチ"],
+      "variants": [
+        { "id": 2005, "sku": "4982266011951x1pc", "price": "5000", "available": true, "compare_at_price": null }
+      ],
+      "images": []
+    },
+    {
+      "id": 1005,
+      "title": "価格不正を含む商品 タイヤ",
+      "handle": "bad-price-tire",
+      "body_html": "",
+      "vendor": "",
+      "product_type": "タイヤ",
+      "tags": ["タイヤ"],
+      "variants": [
+        { "id": 2006, "sku": "4982266011951x1pc", "price": "0", "available": true, "compare_at_price": null },
+        { "id": 2007, "sku": "4982266011951x1pc", "price": "abc", "available": true, "compare_at_price": null },
+        { "id": 2008, "sku": "4982266011950x1pc", "price": "12000", "available": false, "compare_at_price": null }
+      ],
+      "images": [{ "src": "https://cdn.shopify.com/s/files/1/tire-1005.jpg" }]
+    }
+  ]
+}
