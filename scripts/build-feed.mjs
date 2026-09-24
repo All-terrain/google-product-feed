@@ -146,20 +146,22 @@ export async function fetchAllProducts(collections, opts = {}) {
 // 変換・集計
 // ---------------------------------------------------------------------------
 
-/** product 配列 → { items, skipped } */
+/** product 配列 → { items, skipped, warnings } */
 export function convertProducts(products) {
   const items = [];
   const skipped = [];
+  const warnings = [];
   for (const p of products) {
     const r = productToItems(p, { idTemplate: ID_TEMPLATE, storeUrl: STORE_URL });
     items.push(...r.items);
     skipped.push(...r.skipped);
+    warnings.push(...(r.warnings ?? []));
   }
-  return { items, skipped };
+  return { items, skipped, warnings };
 }
 
 /** feed-summary.json の内容を作る */
-export function buildSummary({ products, items, skipped, generatedAt = new Date() }) {
+export function buildSummary({ products, items, skipped, warnings = [], generatedAt = new Date() }) {
   const byType = {};
   let inStock = 0;
   let outOfStock = 0;
@@ -182,6 +184,8 @@ export function buildSummary({ products, items, skipped, generatedAt = new Date(
     out_of_stock: outOfStock,
     with_gtin: withGtin,
     multipack,
+    warning_count: warnings.length,
+    warnings: warnings.slice(0, SKIPPED_SAMPLE),
     skipped_count: skipped.length,
     skipped: skipped.slice(0, SKIPPED_SAMPLE),
   };
@@ -211,7 +215,7 @@ async function main() {
   const products = await fetchAllProducts(args.collections, { maxPages: args.maxPages, log });
   log(`[fetch] 合計 ${products.length} 商品（重複排除後）`);
 
-  const { items, skipped } = convertProducts(products);
+  const { items, skipped, warnings } = convertProducts(products);
   const xml = buildFeedXml(items);
 
   // 整形式チェック（<item> 開閉数一致・生の & なし・制御文字なし）
@@ -220,7 +224,7 @@ async function main() {
     throw new Error(`生成 XML の検証に失敗: ${check.errors.join(' / ')}`);
   }
 
-  const summary = buildSummary({ products, items, skipped });
+  const summary = buildSummary({ products, items, skipped, warnings });
 
   // 全件取得・検証が済んでから書く（途中失敗で前回ファイルを壊さない）
   await writeAtomic(args.out, xml);
@@ -228,7 +232,7 @@ async function main() {
 
   log(
     `[done] products=${summary.products} items=${summary.items} タイヤ=${summary.by_type['タイヤ']} ホイール=${summary.by_type['ホイール']} ` +
-      `in_stock=${summary.in_stock} out_of_stock=${summary.out_of_stock} with_gtin=${summary.with_gtin} multipack=${summary.multipack} skipped=${summary.skipped_count}`,
+      `in_stock=${summary.in_stock} out_of_stock=${summary.out_of_stock} with_gtin=${summary.with_gtin} multipack=${summary.multipack} skipped=${summary.skipped_count} warnings=${summary.warning_count}`,
   );
   log(`[done] wrote ${resolve(args.out)} , ${resolve(args.summary)}`);
 }
