@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T22:27:36.854Z",
+  "generated_at": "2026-09-24T10:05:06.300Z",
   "products": 28016,
   "items": 28015,
   "by_type": {
@@ -10,6 +10,8 @@
   "out_of_stock": 0,
   "with_gtin": 12424,
   "multipack": 6203,
+  "warning_count": 0,
+  "warnings": [],
   "skipped_count": 1,
   "skipped": [
     {
