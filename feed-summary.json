@@ -1,22 +1,17 @@
 {
-  "generated_at": "2026-10-15T22:37:23.787Z",
-  "products": 27988,
-  "items": 27987,
+  "generated_at": "2026-10-16T22:11:46.369Z",
+  "products": 24959,
+  "items": 24959,
   "by_type": {
-    "タイヤ": 15995,
-    "ホイール": 11992
+    "タイヤ": 13351,
+    "ホイール": 11608
   },
-  "in_stock": 27987,
+  "in_stock": 24959,
   "out_of_stock": 0,
-  "with_gtin": 12420,
-  "multipack": 6201,
+  "with_gtin": 10051,
+  "multipack": 5017,
   "warning_count": 0,
   "warnings": [],
-  "skipped_count": 1,
-  "skipped": [
-    {
-      "id": "10668768985369",
-      "reason": "no_image"
-    }
-  ]
+  "skipped_count": 0,
+  "skipped": []
 }
